@@ -29,18 +29,18 @@ export function CityTable() {
                 <th>
                     Photo
                 </th>
-                {data?.content.map((city: City) =>
+            </tr>
+            {data?.content.map((city: City) =>
                 (<tr key={city.id}>
                     <td>
                         {city.name}
                     </td>
                     <td>
                         {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-                        <img src={city.photo} alt="photo image"/>
+                        <img src={city.photo} sizes="200px, 300px" alt="photo image"/>
                     </td>
                 </tr>)
             )}
-            </tr>
         </table>
     )
 }
