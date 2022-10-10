@@ -3,14 +3,19 @@ import {useQuery} from "react-query";
 import {fetchCities} from "../api/city-list-api";
 import {FetchCitiesParams} from "../api/FetchCitiesParams";
 import {City} from "../model/City";
+import {useNavigate} from "react-router-dom";
+import {useAuth} from "../lib/auth";
+import {ROLE_ALLOW_EDIT} from "../model/User";
 
 export default function CityTable() {
+    const {user} = useAuth();
     const [fetchCitiesParams, setFetchCitiesParams] = useState<FetchCitiesParams>({
         size: 10,
         search: undefined,
         page: 0
     });
-    const {data, status} = useQuery(['cities', fetchCitiesParams], () => fetchCities(fetchCitiesParams))
+    const {data, status} = useQuery('cities', () => fetchCities(fetchCitiesParams))
+    const navigate = useNavigate();
 
     if (status === "loading") {
         return <p>Loading...</p>
@@ -30,6 +35,7 @@ export default function CityTable() {
                 <th>
                     Photo
                 </th>
+                <th/>
             </tr>
             </thead>
             <tbody>
@@ -39,9 +45,16 @@ export default function CityTable() {
                         {city.name}
                     </td>
                     <td>
-                        {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-                        <img src={city.photo} sizes="200px, 300px" alt="City Image"/>
+                        <img src={city.photo} sizes="200px, 300px" alt="City"/>
                     </td>
+                    {
+                        user?.roles.includes(ROLE_ALLOW_EDIT) &&
+                        (
+                            <td>
+                                <button onClick={(_) => navigate("/update-city", {state: {id: city.id}})}>Edit</button>
+                            </td>
+                        )
+                    }
                 </tr>)
             )}
             </tbody>

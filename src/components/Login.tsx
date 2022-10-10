@@ -12,11 +12,11 @@ export function Login() {
         <div>
             Login
             <form
-                onSubmit={async (e) => {
-                    e.preventDefault();
+                onSubmit={(e) => {
+                    e.preventDefault()
                     login(values)
                         .then((_) => navigate("/"))
-                        .catch(err => setError(err));
+                        .catch(err => setError(err))
                 }}
             >
                 <input

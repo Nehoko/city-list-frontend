@@ -4,6 +4,7 @@ import CityTable from "./components/CityTable"
 import UserInfo from "./components/UserInfo";
 import {Route, Routes} from "react-router-dom";
 import {Login} from "./components/Login";
+import CityEditor from "./components/CityEditor";
 
 function App() {
     return (<Routes>
@@ -13,8 +14,8 @@ function App() {
                 <CityTable/>
             </>}
         />
-        <Route path="/login" element={<Login/>}
-        />
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/update-city" element={<CityEditor/>}/>
     </Routes>)
 }
 

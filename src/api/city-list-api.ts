@@ -16,14 +16,28 @@ export async function fetchCities(params: FetchCitiesParams): Promise<Page<City>
     return res.json()
 }
 
-export async function updateCity(city: City) {
+export async function updateCity(city: City): Promise<boolean> {
     let requestUri = `${API_URI}/city`
 
     const res = await fetch(requestUri, {
         method: "PUT",
         body: JSON.stringify(city),
-        headers: authHeader()
+        headers: {
+            'Content-Type': 'application/json',
+            ...authHeader()
+        }
     })
 
     return res.ok
+}
+
+export async function getCity(id: number): Promise<City> {
+    let requestUri = `${API_URI}/city?id=${id}`
+
+    const res = await fetch(requestUri, {
+        method: "GET",
+        headers: authHeader()
+    })
+
+    return res.json()
 }
