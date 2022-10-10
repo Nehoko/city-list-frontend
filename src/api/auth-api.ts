@@ -14,7 +14,7 @@ export async function login(user: User): Promise<UserWithToken> {
     })).json()
 }
 
-export async function logout() {
+export async function logout(): Promise<void> {
     await storage.clearToken()
 }
 
@@ -28,11 +28,18 @@ export async function register(user: User): Promise<any> {
     })
 }
 
-export async function getCurrentUser(): Promise<UserWithToken> {
-    return (await fetch(`${API_URI}/me`, {
+export async function getCurrentUser(): Promise<UserWithToken | undefined> {
+    const response = await fetch(`${API_URI}/me`, {
         method: "GET",
         headers: authHeader()
-    })).json()
+    })
+
+    if (response.status === 401) {
+        await logout()
+        return
+    }
+
+    return response.json()
 }
 
 export function authHeader(): HeadersInit {
