@@ -24,7 +24,7 @@ export default function CityTable() {
     const navigate = useNavigate();
 
     const handleSearch = (search: string) => {
-        setSearchParams({...searchParams, search})
+        setSearchParams({search, page: 0, size: 10})
     }
     const handlePageChange = (selectedItem: { selected: number }) => {
         const page = selectedItem.selected
