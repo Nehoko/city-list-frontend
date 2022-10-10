@@ -1,19 +1,21 @@
 import React from 'react';
 import './App.css';
-import {QueryClient, QueryClientProvider} from "react-query";
-import {ReactQueryDevtools} from "react-query/devtools";
-import {CityTable} from "./components/CityTable"
-import {createRoot} from "react-dom/client";
-
-const queryClient = new QueryClient();
+import CityTable from "./components/CityTable"
+import UserInfo from "./components/UserInfo";
+import {Route, Routes} from "react-router-dom";
+import {Login} from "./components/Login";
 
 function App() {
-    return (
-        <QueryClientProvider client={queryClient}>
-            <CityTable/>
-            <ReactQueryDevtools/>
-        </QueryClientProvider>
-    );
+    return (<Routes>
+        <Route path="/" element=
+            {<>
+                <UserInfo/>
+                <CityTable/>
+            </>}
+        />
+        <Route path="/login" element={<Login/>}
+        />
+    </Routes>)
 }
 
 export default App;

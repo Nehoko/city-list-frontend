@@ -4,7 +4,7 @@ import {fetchCities} from "../api/city-list-api";
 import {FetchCitiesParams} from "../api/FetchCitiesParams";
 import {City} from "../model/City";
 
-export function CityTable() {
+export default function CityTable() {
     const [fetchCitiesParams, setFetchCitiesParams] = useState<FetchCitiesParams>({
         size: 10,
         search: undefined,
@@ -22,6 +22,7 @@ export function CityTable() {
 
     return (
         <table>
+            <thead>
             <tr>
                 <th>
                     Name
@@ -30,6 +31,8 @@ export function CityTable() {
                     Photo
                 </th>
             </tr>
+            </thead>
+            <tbody>
             {data?.content.map((city: City) =>
                 (<tr key={city.id}>
                     <td>
@@ -37,10 +40,11 @@ export function CityTable() {
                     </td>
                     <td>
                         {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-                        <img src={city.photo} sizes="200px, 300px" alt="photo image"/>
+                        <img src={city.photo} sizes="200px, 300px" alt="City Image"/>
                     </td>
                 </tr>)
             )}
+            </tbody>
         </table>
     )
 }

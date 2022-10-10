@@ -1,6 +1,7 @@
 import {City} from "../model/City";
 import {Page} from "../model/Page";
 import {FetchCitiesParams} from "./FetchCitiesParams";
+import {authHeader} from "./auth-api";
 
 export const API_URI = "http://localhost:8080/api"
 
@@ -18,7 +19,11 @@ export async function fetchCities(params: FetchCitiesParams): Promise<Page<City>
 export async function updateCity(city: City) {
     let requestUri = `${API_URI}/city`
 
-    const res = await fetch(requestUri, {method: "PUT", body: JSON.stringify(city)})
+    const res = await fetch(requestUri, {
+        method: "PUT",
+        body: JSON.stringify(city),
+        headers: authHeader()
+    })
 
     return res.ok
 }
