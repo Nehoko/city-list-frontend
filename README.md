@@ -10,6 +10,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Node v17.2.0
 - docker
 - docker daemon should be active for running scripts in [docker](#Docker) section
+- running [city-list-backend](https://github.com/Nehoko/city-list-backend) in docker container
 
 ## Docker
 To run project in docker container, you need to
