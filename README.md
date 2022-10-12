@@ -2,6 +2,19 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Docker
+To run project in docker container, you need to
+- install docker to your machine
+- 
+### Dev
+- run `bash ./build-dev.sh` to build dev image
+- run `bash ./start-dev.sh` to create dev container and run it
+
+### Production
+- run `bash ./build-prod.sh` to build dev image
+- run `bash ./start-prod.sh` to create dev container and run it
+
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -1,0 +1,1 @@
+docker build -t city-list-frontend:dev .

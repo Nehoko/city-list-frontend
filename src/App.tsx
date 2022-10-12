@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import CityTable from "./components/CityTable"
-import UserInfo from "./components/UserInfo";
+import CityTable from "./components/city-table/CityTable"
+import UserInfo from "./components/user-info/UserInfo";
 import {Route, Routes} from "react-router-dom";
 import {Login} from "./components/Login";
 import CityEditor from "./components/CityEditor";

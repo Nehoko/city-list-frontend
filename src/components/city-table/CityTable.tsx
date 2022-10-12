@@ -1,13 +1,15 @@
 import React, {useState} from "react";
 import {useQuery} from "react-query";
-import {fetchCities} from "../api/city-list-api";
-import {FetchCitiesParams} from "../api/FetchCitiesParams";
-import {City} from "../model/City";
+import {fetchCities} from "../../api/city-list-api";
+import {FetchCitiesParams} from "../../api/FetchCitiesParams";
+import {City} from "../../model/City";
 import {useNavigate} from "react-router-dom";
-import {useAuth} from "../lib/auth";
-import {ROLE_ALLOW_EDIT} from "../model/User";
+import {useAuth} from "../../lib/auth";
+import {ROLE_ALLOW_EDIT} from "../../model/User";
 import ReactPaginate from "react-paginate";
-import {useForm} from "../hooks/useForm";
+import {useForm} from "../../hooks/useForm";
+
+import './city-table.css'
 
 export default function CityTable() {
     const {user} = useAuth();
@@ -70,7 +72,7 @@ export default function CityTable() {
                 {data?.content.map((city: City) =>
                     (<tr key={city.id}>
                         <td>{city.name}</td>
-                        <td><img src={city.photo} sizes="200px, 300px" alt="City"/></td>
+                        <td><img src={city.photo} alt="City"/></td>
                         {
                             user?.roles.includes(ROLE_ALLOW_EDIT) &&
                             (
@@ -92,6 +94,8 @@ export default function CityTable() {
                            disabledClassName="pagination__link--disabled"
                            nextAriaLabel="next"
                            onPageChange={handlePageChange}
+                           containerClassName={'pages pagination'}
+                           activeClassName={'active'}
             />
         </div>
     )
