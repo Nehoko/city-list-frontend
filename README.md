@@ -2,6 +2,11 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+#Requirements
+- Node v17.2.0
+- docker
+- docker daemon should be active for running scripts in [docker](#Docker) section
+
 ## Docker
 To run project in docker container, you need to
 - install docker to your machine
