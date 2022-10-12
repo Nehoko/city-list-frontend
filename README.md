@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Users for testing
+- user:userPass
+- admin:adminPass
+
 ## Requirements
 - Node v17.2.0
 - docker
